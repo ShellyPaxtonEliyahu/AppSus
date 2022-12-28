@@ -26,11 +26,21 @@ export function MailIndex() {
                 setMails(updateMails)
             })
     }
+
+    function onComposeMail(ev) {
+        ev.preventDefault()
+        mailService.save(newMail)
+            .then((mail) => {
+                console.log('mail saved!', mail)
+                
+            })
+            .catch(err => console.log('error'))
+    }
     
     
     return <section>
         <MailList mails={mails} onRemoveMail={onRemoveMail} />
-        <Compose />
+        <Compose onAddMail={onComposeMail}/>
     </section>
 }
 

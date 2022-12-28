@@ -11,7 +11,7 @@ export function Compose() {
         mailService.save(newMail)
             .then((mail) => {
                 console.log('mail saved!', mail)
-                
+        
             })
             .catch(err => console.log('error'))
     }
@@ -20,8 +20,6 @@ export function Compose() {
         let { value, type, name: field } = target
         setNewMail((prevNewMail) => ({ ...prevNewMail, [field]: value }))
     }
-
-
 
     return <section>
         <h2>Compose</h2>
