@@ -1,10 +1,30 @@
+const { useState, useEffect } = React
+
+import { NoteFilter } from "../cmps/note-filter.jsx"
+import { NoteList } from "../cmps/note-list.jsx"
+import { NotePreview } from "../cmps/note-preview.jsx"
+import { noteService } from "../services/note.service.js"
 
 export function NoteIndex() {
 
-    return <section>note app
-        <main>
+    // const [notes, setNotes] = useState([])
+    
+    // useEffect(() => {
+    //     loadNotes()
+    // }, [])
 
-        </main>
+    // function loadNotes() {
+    //     noteService.query().then(notes => setNotes(notes))
+    // }
+
+    return <section>note app
+        {/* <main>
+        </main> */}
+        <NoteFilter />
+        <NoteList />
+        <NotePreview />
+
+
     </section>
 
 }
