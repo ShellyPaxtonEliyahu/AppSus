@@ -19,6 +19,7 @@ function query() {
 }
 
 function save(note) {
+    console.log('note',note)
     if (note.id) {
         return aStorageService.put(STORAGE_KEY, note)
     } else {
