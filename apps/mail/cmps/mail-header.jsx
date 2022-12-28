@@ -1,7 +1,8 @@
 
 export function MailHeader(){
-    return <section className="mail-header">
+    return <section >
         mail header
 
     </section>
 }
+// className="mail-header"
