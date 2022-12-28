@@ -1,4 +1,5 @@
 const { useState, useEffect } = React
+import { Compose } from "../cmps/mail-compose.jsx";
 import { MailList } from "../cmps/mail-list.jsx";
 import { mailService } from "../services/mail.service.js";
 
@@ -17,13 +18,19 @@ export function MailIndex() {
                 setMails(mails)
             })
     }
-        
     
-    
+    function onRemoveMail(mailId) {
+        mailService.remove(mailId)
+            .then(()=>{
+                const updateMails = mails.filter(mail=>mail.id!==mailId)
+                setMails(updateMails)
+            })
+    }
     
     
     return <section>
-        <MailList mails={mails} />
+        <MailList mails={mails} onRemoveMail={onRemoveMail} />
+        <Compose />
     </section>
 }
 
