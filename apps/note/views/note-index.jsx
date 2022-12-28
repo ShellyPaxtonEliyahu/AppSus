@@ -12,9 +12,10 @@ export function NoteIndex() {
     
     useEffect(() => {
         loadNotes()
-    }, [])
+    },[])
 
     function loadNotes() {
+        console.log('loadNotes')
         noteService.query().then(notes => setNotes(notes))
     }
 
@@ -31,14 +32,10 @@ export function NoteIndex() {
         })
     }
 
-    function onAddNote(){
-        console.log('onAddNote')
-    }
-
+    
     return <section>
         <NoteFilter />
-        <NoteAdd />
-        <button onClick={() => onAddNote()}> Add Note </button>
+        <NoteAdd loadNotes={loadNotes} />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} />
         
     </section>
