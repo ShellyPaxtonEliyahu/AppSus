@@ -1,9 +1,11 @@
-const { useState } = React
+const { useState, useEffect } = React
+const { useNavigate, useParams, Link } = ReactRouterDOM
 
 import { noteService } from "../services/note.service.js"
 
 
-export function NoteAdd() {
+export function NoteAdd({ loadNotes }) {
+    const navigate = useNavigate()
     const [newNote, setNewNote] = useState({
         type: "note-txt",
         isPinned: false,
@@ -11,28 +13,30 @@ export function NoteAdd() {
             txt: ''
         }
     })
-    const [newTxtNote, setTxtNewNote] = useState({txt:''})
-    // const [newNote, setNewNote] = useState(noteService.getEmptyNote())
+    const [newTxtNote, setTxtNewNote] = useState({ txt: '' })
 
     function onAddNote(ev) {
         ev.preventDefault()
 
-        console.log(newTxtNote)
+        console.log('newTxtNote', newTxtNote)
         console.log(newNote)
-
-        // יש דיליי בהכנסת כל הטקסט לתוך הTODO
-
-        noteService.save(newNote).then((note) => {
-            console.log('note saved !', note)
-        })
-
-        //יש לאתחל את הVALUE
+        if (newTxtNote.txt) {
+            // יש דיליי בהכנסת כל הטקסט לתוך הTODO
+            setNewNote((prevNote) => ({ ...prevNote, info: newTxtNote }))
+            noteService.save(newNote).then((note) => {
+                console.log('note saved !', note)
+            })
+            //יש לאתחל את הVALUE
+            loadNotes()
+        }
+        else console.log('no new note')
     }
 
     function handleChange({ target }) {
         let { value } = target
-        setTxtNewNote((prevTxtNote) => ({...prevTxtNote, txt:value}))
-        setNewNote((prevNote) => ({...prevNote, info:newTxtNote}))
+
+        console.log(value)
+        setTxtNewNote((prevTxtNote) => ({ ...prevTxtNote, txt: value }))
     }
 
     return <section>
