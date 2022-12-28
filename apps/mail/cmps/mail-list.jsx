@@ -1,5 +1,15 @@
-export function MailList() {
+import { MailPreview } from "./mail-preview.jsx";
 
-    return <div>Mail list</div>
+export function MailList({ mails }) {
+    return <section className="mail-list">
+        <ul>
+            {mails.map(mail => <li key={mail.id}>
+                {mail.subject}
+                <MailPreview mail={mail} showDetails={showDetails}/>
+                <button onClick={showDetails}>Show Details</button>
+            </li>)}
+
+        </ul>
+    </section>
 
 }

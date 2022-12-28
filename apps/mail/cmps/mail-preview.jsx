@@ -1,3 +1,8 @@
-export function MailDisplay(){
+export function MailPreview(){
+
+
+    function showDetails(mailId) {
+        
+    }
     
 }

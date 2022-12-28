@@ -7,8 +7,7 @@ export const mailService = {
     remove,
     save,
 }
-// console.log('storage:',storageService)
-// console.log('astorage:',aStorageService)
+
 const MAIL_KEY = 'mailDB'
 _createMails()
 
@@ -43,7 +42,7 @@ function _createMails() {
     if (!mails || !mails.length) {
         mails = [
             {
-                id: utilService._makeId,
+                id: 'etih55',
                 subject: 'Mister E-Mail',
                 body: 'Hello there, its my first E-mail app!',
                 isRead: false,
@@ -51,7 +50,7 @@ function _createMails() {
                 to: 'shellypax@gmail.com'
             },
             {
-                id: utilService._makeId,
+                id: 'sru340',
                 subject: 'Mister E-Mail',
                 body: 'Hello there, its my first E-mail app!',
                 isRead: false,
@@ -59,7 +58,7 @@ function _createMails() {
                 to: 'shellypax@gmail.com'
             },
             {
-                id: utilService._makeId,
+                id: 'iurt34',
                 subject: 'Mister E-Mail',
                 body: 'Hello there, its my first E-mail app!',
                 isRead: false,
@@ -67,7 +66,7 @@ function _createMails() {
                 to: 'shellypax@gmail.com'
             },
             {
-                id: utilService._makeId,
+                id: 'ig9e09',
                 subject: 'Mister E-Mail',
                 body: 'Hello there, its my first E-mail app!',
                 isRead: false,
@@ -76,17 +75,6 @@ function _createMails() {
             },
         ]
     }
-    aStorageService.post(MAIL_KEY, mails)
+    aStorageService.saveToStorage(MAIL_KEY, mails)
 
 }
-
-// function _createMail() {
-//     const mail = {
-//         id: utilService._makeId(5),
-//         subject: 'Mister E-Mail',
-//         body: 'Hello there, its my first E-mail app!',
-//         isRead: false,
-//         sendAt: Date.now(),
-//         to: 'shellypax@gmail.com'
-//     }
-// }
