@@ -31,14 +31,10 @@ export function NoteIndex() {
         })
     }
 
-    function onAddNote(){
-        console.log('onAddNote')
-    }
-
+    
     return <section>
         <NoteFilter />
         <NoteAdd />
-        <button onClick={() => onAddNote()}> Add Note </button>
         <NoteList notes={notes} onRemoveNote={onRemoveNote} />
         
     </section>
