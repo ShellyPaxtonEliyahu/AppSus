@@ -5,7 +5,8 @@ const STORAGE_KEY = 'noteDB'
 _createNotes()
 
 export const noteService = {
-    query
+    query,
+    remove
 }
 
 function query() {
@@ -13,6 +14,10 @@ function query() {
         .then(notes => {
             return notes
         })
+}
+
+function remove(noteId) {
+    return aStorageService.remove(STORAGE_KEY, noteId)
 }
 
 function _createNotes() {
