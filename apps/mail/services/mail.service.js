@@ -11,7 +11,6 @@ export const mailService = {
 const MAIL_KEY = 'mailDB'
 _createMails()
 
-
 function query() {
     return aStorageService.query(MAIL_KEY)
         .then(mails => {

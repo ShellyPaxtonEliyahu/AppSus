@@ -17,8 +17,7 @@ export function MailIndex() {
                 setMails(mails)
             })
     }
-    
-    
+        
     
     
     
