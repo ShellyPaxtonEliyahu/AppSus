@@ -2,18 +2,14 @@ import { mailService } from "../services/mail.service.js"
 
 const { useState } = React
 
-export function Compose() {
+export function Compose({composeMail}) {
 
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
 
     function onComposeMail(ev) {
+        console.log('event',ev)
         ev.preventDefault()
-        mailService.save(newMail)
-            .then((mail) => {
-                console.log('mail saved!', mail)
-                
-            })
-            .catch(err => console.log('error'))
+        composeMail(newMail)
     }
 
     function handleChange({ target }) {

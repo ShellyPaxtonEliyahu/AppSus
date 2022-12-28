@@ -1,6 +1,10 @@
 import { utilService } from '../../../services/util.service.js'
 // import {storageService} from '../services/storageService.js'
 import { aStorageService } from '../../../services/async-storage.service.js'
+
+const MAIL_KEY = 'mailDB'
+_createMails()
+
 export const mailService = {
     query,
     get,
@@ -9,8 +13,6 @@ export const mailService = {
     getEmptyMail,
 }
 
-const MAIL_KEY = 'mailDB'
-_createMails()
 
 function query() {
     return aStorageService.query(MAIL_KEY)
@@ -20,6 +22,7 @@ function query() {
 }
 
 function get(mailId) {
+    console.log('mailId',mailId)
     return aStorageService.get(MAIL_KEY, mailId)
 }
 
@@ -40,7 +43,7 @@ function getEmptyMail(subject = '', body = '',from = '') {
 }
 
 function _createMails() {
-    let mails = aStorageService.get(MAIL_KEY)
+    let mails = aStorageService.loadFromStorage(MAIL_KEY)
     if (!mails || !mails.length) {
         mails = [
             {
