@@ -1,6 +1,7 @@
 console.log('Hi from service')
+import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../services/storageService.js'
-import { utilService } from '../services/utilService.js'
+import { aStorageService } from '../../../services/async-storage.service.js'
 
 
 const STORAGE_KEY = 'noteDB'
@@ -11,45 +12,35 @@ export const noteService = {
 }
 
 function query() {
-    return storageService.query(STORAGE_KEY)
+    return aStorageService.query(STORAGE_KEY)
         .then(notes => {
-            // if (filterBy.txt) {
-            //     const regex = new RegExp(filterBy.txt, 'i')
-            //     books = books.filter(book => regex.test(book.title))
-            // }
-            // if (filterBy.minPrice) {
-            //     books = books.filter(book => book.listPrice.amount >= filterBy.minPrice)
-            // }
-            // if (filterBy.pageCount) {
-            //     books = books.filter(book => book.pageCount <= filterBy.pageCount)
-            // }
-            // if (filterBy.minYear) {
-            //     books = books.filter(book => filterBy.minYear >= utilService.getYearsDistance(book.publishedDate))
-            // }
-
             return notes
         })
 }
 
 function _createNotes() {
-    const notes = [
-        {
-            id: "n101",
-            type: "note-txt",
-            isPinned: false,
-            info: {
-                txt: "Fullstack Me Baby!"
+    let notes = storageService.loadFromStorage(STORAGE_KEY)
+    console.log('_createNotes')
+    if (!notes || !notes.length) {
+        notes = [
+            {
+                id: "n101",
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    txt: "Fullstack Me Baby!"
+                }
+            },
+            {
+                id: "n102",
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    txt: "Fullstack you !"
+                }
             }
-        },
-        {
-            id: "n102",
-            type: "note-txt",
-            isPinned: false,
-            info: {
-                txt: "Fullstack you !"
-            }
-        }
-    ]
+        ]
+    }
 
-    utilService.saveToStorage(STORAGE_KEY, notes)
+    storageService.saveToStorage(STORAGE_KEY, notes)
 }
