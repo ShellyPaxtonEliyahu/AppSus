@@ -5,7 +5,7 @@ import { noteService } from "../services/note.service.js"
 
 
 export function NoteAdd({ loadNotes }) {
-    const navigate = useNavigate()
+   
     const [newNote, setNewNote] = useState({
         type: "note-txt",
         isPinned: false,
@@ -19,7 +19,6 @@ export function NoteAdd({ loadNotes }) {
         ev.preventDefault()
 
         console.log('newTxtNote', newTxtNote)
-        console.log(newNote)
         if (newTxtNote.txt) {
             // יש דיליי בהכנסת כל הטקסט לתוך הTODO
             setNewNote((prevNote) => ({ ...prevNote, info: newTxtNote }))
@@ -27,7 +26,8 @@ export function NoteAdd({ loadNotes }) {
                 console.log('note saved !', note)
             })
             //יש לאתחל את הVALUE
-            loadNotes()
+            // loadNotes()
+            
         }
         else console.log('no new note')
     }
