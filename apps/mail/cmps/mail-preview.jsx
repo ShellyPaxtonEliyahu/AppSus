@@ -1,5 +1,4 @@
 const { useState, Fragment } = React
-const { Link } = ReactRouterDOM
 
 export function MailPreview({mail}) {
 
@@ -11,9 +10,6 @@ export function MailPreview({mail}) {
         }}>
             <td>{mail.subject}</td>
             <td>{mail.body}</td>
-            {/* <td>
-                <Link to={`/car/${car.id}`}>Details</Link> |
-            </td> */}
         </tr>
         <tr hidden={!isExpanded}>
             <td colSpan="2">
