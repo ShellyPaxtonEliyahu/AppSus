@@ -6,6 +6,7 @@ export const mailService = {
     get,
     remove,
     save,
+    getEmptyMail,
 }
 
 const MAIL_KEY = 'mailDB'
@@ -35,7 +36,9 @@ function save(mail) {
     }
 }
 
-
+function getEmptyMail(subject = '', body = '',from = '') {
+    return { subject, body, isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from }
+}
 
 function _createMails() {
     let mails = aStorageService.get(MAIL_KEY)
@@ -47,7 +50,8 @@ function _createMails() {
                 body: 'Hello there, its my first E-mail app!',
                 isRead: false,
                 sendAt: Date.now(),
-                to: 'shellypax@gmail.com'
+                to: 'shellypax@gmail.com',
+                from: null
             },
             {
                 id: 'sru340',
@@ -55,7 +59,8 @@ function _createMails() {
                 body: 'Hello there, its my first E-mail app!',
                 isRead: false,
                 sendAt: Date.now(),
-                to: 'shellypax@gmail.com'
+                to: 'shellypax@gmail.com',
+                from: null
             },
             {
                 id: 'iurt34',
@@ -63,7 +68,8 @@ function _createMails() {
                 body: 'Hello there, its my first E-mail app!',
                 isRead: false,
                 sendAt: Date.now(),
-                to: 'shellypax@gmail.com'
+                to: 'shellypax@gmail.com',
+                from: null
             },
             {
                 id: 'ig9e09',
@@ -71,7 +77,8 @@ function _createMails() {
                 body: 'Hello there, its my first E-mail app!',
                 isRead: false,
                 sendAt: Date.now(),
-                to: 'shellypax@gmail.com'
+                to: 'shellypax@gmail.com',
+                from: null
             },
         ]
     }
