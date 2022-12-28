@@ -34,8 +34,6 @@ export function MailIndex() {
                 
             })
             .catch(err => console.log('error'))
-
-
     }
     
     
