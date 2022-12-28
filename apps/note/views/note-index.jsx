@@ -9,10 +9,10 @@ import { noteService } from "../services/note.service.js"
 export function NoteIndex() {
 
     const [notes, setNotes] = useState([])
-    
+
     useEffect(() => {
         loadNotes()
-    },[])
+    }, [])
 
     function loadNotes() {
         console.log('loadNotes')
@@ -26,18 +26,41 @@ export function NoteIndex() {
             setNotes(updatedNotes)
             // showSuccessMsg('Book removed')
         })
-        .catch((err) =>{
-            console.log('error', err)
-            // showErrorMsg('Could not remove note')
-        })
+            .catch((err) => {
+                console.log('error', err)
+                // showErrorMsg('Could not remove note')
+            })
     }
 
-    
+    function addNote(newTxtNote) {
+        console.log('newTxtNote', newTxtNote)
+
+        if (newTxtNote) {
+
+            noteService.addNote(newTxtNote).then(note => {
+                console.log(note)
+                setNotes(prevNotes => [...prevNotes, note])
+            })
+
+            
+
+            // setNewNote((prevNote) => ({ ...prevNote, info: newTxtNote }))
+            // const newNote = noteService.getEmptyNote('note-txt', 'newTxtNote.txt')
+            // noteService.save(newNote).then((note) => {
+            //     console.log('note saved !', note)
+            // })
+
+            // loadNotes()
+
+        }
+        else console.log('no new note')
+    }
+
     return <section>
         <NoteFilter />
-        <NoteAdd loadNotes={loadNotes} />
+        <NoteAdd addNote={addNote} />
         <NoteList notes={notes} onRemoveNote={onRemoveNote} />
-        
+
     </section>
 
 }

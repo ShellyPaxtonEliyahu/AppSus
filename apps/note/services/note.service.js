@@ -8,7 +8,8 @@ export const noteService = {
     query,
     remove,
     save,
-    getEmptyNote
+    getEmptyNote,
+    addNote
 }
 
 function query() {
@@ -16,6 +17,11 @@ function query() {
         .then(notes => {
             return notes
         })
+}
+
+function addNote(txt){
+    var note = getEmptyNote(undefined, txt)
+    return save(note)
 }
 
 function save(note) {
@@ -32,7 +38,7 @@ function remove(noteId) {
 }
 
 function getEmptyNote(type="note-txt", txt = '') {
-    return {type, isPinned: false, info:{txt}}
+    return {type, isPinned: false, info:{txt:txt}}
 }
 
 function _createNotes() {
