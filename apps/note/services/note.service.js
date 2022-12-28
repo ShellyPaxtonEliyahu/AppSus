@@ -1,6 +1,3 @@
-console.log('Hi from service')
-import { utilService } from '../../../services/util.service.js'
-import { storageService } from '../services/storageService.js'
 import { aStorageService } from '../../../services/async-storage.service.js'
 
 
@@ -19,8 +16,8 @@ function query() {
 }
 
 function _createNotes() {
-    let notes = storageService.loadFromStorage(STORAGE_KEY)
-    console.log('_createNotes')
+    let notes = aStorageService.loadFromStorage(STORAGE_KEY)
+    // console.log('_createNotes')
     if (!notes || !notes.length) {
         notes = [
             {
@@ -42,5 +39,5 @@ function _createNotes() {
         ]
     }
 
-    storageService.saveToStorage(STORAGE_KEY, notes)
+    aStorageService.saveToStorage(STORAGE_KEY, notes)
 }

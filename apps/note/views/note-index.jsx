@@ -7,24 +7,20 @@ import { noteService } from "../services/note.service.js"
 
 export function NoteIndex() {
 
-    // const [notes, setNotes] = useState([])
+    const [notes, setNotes] = useState([])
     
-    // useEffect(() => {
-    //     loadNotes()
-    // }, [])
+    useEffect(() => {
+        loadNotes()
+    }, [])
 
-    // function loadNotes() {
-    //     noteService.query().then(notes => setNotes(notes))
-    // }
+    function loadNotes() {
+        noteService.query().then(notes => setNotes(notes))
+    }
 
-    return <section>note app
-        {/* <main>
-        </main> */}
+    return <section>
         <NoteFilter />
-        <NoteList />
-        <NotePreview />
-
-
+        <NoteList notes={notes} />
+        
     </section>
 
 }
