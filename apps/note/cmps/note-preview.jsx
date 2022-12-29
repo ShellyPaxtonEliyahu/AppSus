@@ -13,7 +13,7 @@ export function NotePreview({ note, onRemoveNote }) {
     }
 
     return <article className="note-preview" style={style}>
-        {/* <h2> {note.type} </h2> */}
+        
         <p className="note-content"> {note.info.txt}</p>
 
         <NotePreviewTools note={note} onRemoveNote={onRemoveNote} changeBGColor={changeBGColor} />

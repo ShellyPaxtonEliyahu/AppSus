@@ -33,8 +33,6 @@ export function NoteIndex() {
             })
     }
 
-
-
     function addNote(newTxtNote) {
         if (newTxtNote) {
             noteService.addNote(newTxtNote).then(note => {
@@ -42,6 +40,10 @@ export function NoteIndex() {
             })
         }
         else console.log('no new note')
+    }
+
+    function editNote(noteId){
+        console.log('editNote')
     }
 
     return <section>
