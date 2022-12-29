@@ -1,8 +1,36 @@
 // const { useState, Fragment } = React
+// const {Link} = ReactRouterDOM
 import { MailPreview } from "./mail-preview.jsx";
 
 export function MailList({ mails, onRemoveMail }) {
-    return <table border="1">
+
+    // const style = {
+    //     // ul : {
+    //     //     listStyleType: none
+    //     // }
+    //     listStyleType: none
+    // }
+
+    return <ul>
+        {mails.map(mail => <li key={mail.id}>
+            <MailPreview onRemoveMail={onRemoveMail} mail={mail} />
+            {/* <Link to={`/mail/${mail.id}`}></Link> */}
+        </li>)}
+    </ul>
+
+
+
+}
+
+
+
+
+
+
+
+
+
+{/* <table border="1">
         <thead>
             <tr>
                 <th>subject</th>
@@ -19,14 +47,7 @@ export function MailList({ mails, onRemoveMail }) {
 
 
         </tbody>
-    </table>
-
-
-
-}
-
-
-
+    </table> */}
 
 
 // <div>
