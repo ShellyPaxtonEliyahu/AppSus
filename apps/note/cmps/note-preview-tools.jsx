@@ -6,7 +6,6 @@ export function NotePreviewTools({ onRemoveNote, changeBGColor }) {
 
     function handleChangeBGColor({ target }) {
         let { value } = target
-        console.log('newColor', value)
         setNewColor(value)
         changeBGColor(value)
     }
