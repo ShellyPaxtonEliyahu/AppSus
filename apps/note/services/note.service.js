@@ -7,6 +7,7 @@ _createNotes()
 export const noteService = {
     query,
     addNote,
+    duplicateNote,
     save,
     remove,
     get,
@@ -21,13 +22,18 @@ function query() {
         })
 }
 
-function addNote(txt){
-    var note = getEmptyNote(undefined, txt)
+function addNote(txt) {
+    var note = getEmptyNote(undefined, false, txt)
+    return save(note)
+}
+
+function duplicateNote(note){
+    var note = getEmptyNote(note.type,note.isPinned, note.info.txt, note.style )
     return save(note)
 }
 
 function save(note) {
-    console.log('note save',note)
+    console.log('note save', note)
     if (note.id) {
         return aStorageService.put(STORAGE_KEY, note)
     } else {
@@ -41,14 +47,14 @@ function remove(noteId) {
 
 function get(noteId) {
     return aStorageService.get(STORAGE_KEY, noteId)
-    
+
 }
 
-function getEmptyNote(type="note-txt", txt = '') {
-    return {type, isPinned: false, info:{txt:txt}, style:{backgroundColor: 'blue'}}
+function getEmptyNote(type = "note-txt", isPinned = false, txt = '', style = { backgroundColor: 'blue' }) {
+    return { type: type, isPinned: isPinned, info: { txt: txt }, style: style }
 }
 
-function changeNoteStyle(channgedNote){
+function changeNoteStyle(channgedNote) {
     return save(channgedNote)
 }
 
@@ -64,7 +70,7 @@ function _createNotes() {
                 info: {
                     txt: "Fullstack Me Baby!"
                 },
-                style:{
+                style: {
                     backgroundColor: 'blue'
                 }
             },
@@ -75,7 +81,7 @@ function _createNotes() {
                 info: {
                     txt: "Fullstack you !"
                 },
-                style:{
+                style: {
                     backgroundColor: 'green'
                 }
             }

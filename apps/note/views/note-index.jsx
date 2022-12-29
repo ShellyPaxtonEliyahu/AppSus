@@ -27,23 +27,23 @@ export function NoteIndex() {
         noteService.remove(noteId).then(() => {
             const updatedNotes = notes.filter(Note => Note.id !== noteId)
             setNotes(updatedNotes)
-            showSuccessMsg('note removed')
+            // showSuccessMsg('note removed')
         })
             .catch((err) => {
                 console.log('error', err)
                 // showErrorMsg('Could not remove note')
             })
     }
-    
-    function onEditNote(noteId){
+
+    function onEditNote(noteId) {
         noteService.get(noteId).then((note) => {
             setNoteEdit(note)
-            console.log('onEditNote', note)
+            // console.log('onEditNote', note)
             onRemoveNote(noteId)
         })
-        .catch((err) => {
-            console.log('onEditNote-not good', err)
-        })
+            .catch((err) => {
+                console.log('onEditNote-not good', err)
+            })
     }
 
     function addNote(newTxtNote) {
@@ -55,12 +55,22 @@ export function NoteIndex() {
         else console.log('no new note')
     }
 
+    function updateNote(note) {
+        console.log('updateNote')
+        noteService.duplicateNote(note).then((note) => {
+            setNotes(prevNotes => [note, ...prevNotes])
+            setNoteEdit(null)
+        })
+            .catch((err) => {
+                console.log('no update note')
+            })
+    }
+
 
     return <section>
         <NoteFilter />
-
         <NoteAdd addNote={addNote} />
-        {noteEdit && <NoteEdit noteEdit={noteEdit} />}
+        {noteEdit && <NoteEdit noteEdit={noteEdit} updateNote={updateNote} />}
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
 
 
