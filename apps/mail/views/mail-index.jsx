@@ -9,19 +9,27 @@ export function MailIndex() {
     const [mails,setMails] = useState([])
     const [filterBy,setFilterBy]=useState(mailService.getDefaultFilter())
 
+  
     useEffect(()=> {
+        console.log('useefect')
         loadMails()
     },[filterBy])
     
     function loadMails(){
+        console.log('load mails activated')
         mailService.query(filterBy)
             .then((mails) => {
+                console.log('mails',mails)
                 setMails(mails)
             })
     }
 
-    function onSetFilter(filterBy) {
-        setFilterBy(filterBy)
+    function onSetFilter(isRead) {
+        console.log('on set filter was activated boolean is:', isRead)
+
+        setFilterBy(prev=>({...prev, ['isRead']:isRead}))
+        console.log('filterBy', filterBy)
+
     }
     
     function onRemoveMail(mailId) {

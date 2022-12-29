@@ -12,23 +12,43 @@ export const mailService = {
     save,
     getEmptyMail,
     getDefaultFilter,
+    toggleIsRead
 }
 
 function getDefaultFilter() {
-    return {subject:'', body:'', isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from:'danayani@gmail.com'}
+    return { subject: '', body: '', isRead: true, sendAt: Date.now(), to: 'shellypax@gmail.com', from: 'danayani@gmail.com' }
+}
+
+function toggleIsRead(mail){
+    mail.isRead = !mail.isRead
+    save(mail)
 }
 
 function query(filterBy = getDefaultFilter()) {
+    // console.log('filterby', filterBy)
     return aStorageService.query(MAIL_KEY)
         .then(mails => {
-            if(filterBy.isRead) {
-                const regex = new RegExp(filterBy.isRead,'i')
-                mails = mails.filter(mail=>regex.test(mail.isRead))
+            if (filterBy.isRead) {
+                if (filterBy.isRead === 'all') {
+                    console.log('showing akk mails')
+                } else {
+                    const regex = new RegExp(filterBy.isRead, 'i')
+                    mails = mails.filter(mail => regex.test(mail.isRead))
+                }
+                // console.log('filterby is read =true')
+
+
             }
-            if(filterBy.body) {
-                mails = mails.filter(mail=>regex.test(mail.body))
+            if (!filterBy.isRead) {
+                console.log('filterby is read =false')
+                // const regex = new RegExp(filterBy.isRead,'i')
+                // mails = mails.filter(mail=>regex.test(mail.isRead))
+                mails = mails.filter(mail => mail.isRead === false)
             }
-            mails = mails.sort((m1,m2)=>m1.sendAt-m2.sendAt)
+            if (filterBy.body) {
+                mails = mails.filter(mail => regex.test(mail.body))
+            }
+            mails = mails.sort((m1, m2) => m1.sendAt - m2.sendAt)
             return mails
         })
 }
@@ -50,7 +70,7 @@ function save(mail) {
 }
 
 function getEmptyMail(subject = '', body = '') {
-    return { subject, body, isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from:'danayani@gmail.com' }
+    return { subject, body, isRead: false, sendAt: Date.now(), to: 'shellypax@gmail.com', from: 'danayani@gmail.com' }
 }
 
 function _createMails() {

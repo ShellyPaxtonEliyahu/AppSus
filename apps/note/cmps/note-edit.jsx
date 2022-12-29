@@ -19,9 +19,9 @@ export function NoteEdit({ noteEdit: note, updateNote }) {
     }
 
     return <section>
-        <form onSubmit={onUpdateNote}>
+        <form onSubmit={onUpdateNote} className="note-preview" style={note.style}>
             NoteEdit
-            <input type="text"
+            <input  className="note-update-content" type="text"
                 name="noteTxt"
                 value={txtNote}
                 // placeholder="Enter your note"

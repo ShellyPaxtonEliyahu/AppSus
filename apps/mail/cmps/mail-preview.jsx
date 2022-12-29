@@ -7,6 +7,8 @@ export function MailPreview({ mail, onRemoveMail }) {
 
     const [isExpanded, setIsExpanded] = useState(false)
 
+    const icon = (mail.isRead) ? '♥' : '🔒'
+
     function onExpanded(mailId) {
         mailService.get(mailId)
             .then(() => {
@@ -22,7 +24,9 @@ export function MailPreview({ mail, onRemoveMail }) {
         <div>
             <Link to={`/mail/${mail.id}`}>📂</Link>
         </div>
-
+        <div>
+            {icon}
+        </div>
 
         <div>
             <button onClick={() => onRemoveMail(mail.id)} title="remove mail">🗑</button>

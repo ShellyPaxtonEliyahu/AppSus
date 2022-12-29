@@ -1,8 +1,12 @@
+const { Link } = ReactRouterDOM
 
 export function Home() {
 
     return <section className="home">
-        <h1>Welcome to home page!</h1>
-        <i className="fa-solid btn fa-upload "></i>
+        <div>
+            <Link to={``}>📂</Link>
+            <Link to={``}>📂</Link>
+            <Link to={``}>📂</Link>
+        </div>
     </section>
 }
