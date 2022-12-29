@@ -18,7 +18,7 @@ function getDefaultFilter() {
     return {subject:'', body:'', isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from:''}
 }
 
-function query(filterBy = getDefaultFilter) {
+function query(filterBy = getDefaultFilter()) {
     return aStorageService.query(MAIL_KEY)
         .then(mails => {
             if(filterBy.isRead) {
@@ -28,6 +28,7 @@ function query(filterBy = getDefaultFilter) {
             if(filterBy.body) {
                 mails = mails.filter(mail=>regex.test(mail.body))
             }
+            mails = mails.sort((m1,m2)=>m1.sendAt-m2.sendAt)
             return mails
         })
 }

@@ -36,7 +36,6 @@ export function NoteIndex() {
             noteService.addNote(newTxtNote).then(note => {
                 setNotes(prevNotes => [...prevNotes, note])
             })
-
         }
         else console.log('no new note')
     }
