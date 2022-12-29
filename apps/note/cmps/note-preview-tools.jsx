@@ -1,5 +1,7 @@
 const { useState, useEffect } = React
 
+import { editNote } from "../views/note-index.jsx"
+
 export function NotePreviewTools({ note, onRemoveNote, changeBGColor }) {
 
     const [newColor, setNewColor] = useState('')
@@ -8,6 +10,11 @@ export function NotePreviewTools({ note, onRemoveNote, changeBGColor }) {
         let { value } = target
         setNewColor(value)
         changeBGColor(value)
+    }
+    
+    function onEditNote(noteId){
+        console.log('onEditNote', noteId)
+        editNote(noteId)
     }
 
     const style = {
@@ -18,6 +25,12 @@ export function NotePreviewTools({ note, onRemoveNote, changeBGColor }) {
     return <div className="note-preview-tools flex">
         <div className="">
             <button onClick={() => onRemoveNote(note.id)}> X </button>
+        </div>
+
+        <div>
+            <button onClick={() => onEditNote(note.id)}>
+                <i className="fa-regular fa-pen-to-square"></i>
+            </button>
         </div>
 
         <div className="" >
@@ -31,11 +44,7 @@ export function NotePreviewTools({ note, onRemoveNote, changeBGColor }) {
             </button>
         </div>
 
-        <div>
-            <button>
-                <i className="fa-regular fa-pen-to-square"></i>
-            </button>
-        </div>
+
 
     </div>
 }
