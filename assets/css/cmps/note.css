@@ -17,4 +17,10 @@
     background-color: palevioletred;
 }
 
-.note-content{}   
+.note-content{}  
+
+
+/* edit tools Note */
+.note-preview-tools{
+    gap: 15px;
+}
