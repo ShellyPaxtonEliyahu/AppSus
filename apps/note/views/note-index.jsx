@@ -5,10 +5,12 @@ import { NoteFilter } from "../cmps/note-filter.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
 import { noteService } from "../services/note.service.js"
 import { showSuccessMsg } from "../../../services/event-bus.service.js"
+import { NoteEdit } from "../cmps/note-edit.jsx"
 
 export function NoteIndex() {
 
     const [notes, setNotes] = useState([])
+    const [noteEdit, setNoteEdit] = useState(null) //if != null, open comp
 
     useEffect(() => {
         loadNotes()
@@ -31,6 +33,8 @@ export function NoteIndex() {
             })
     }
 
+
+
     function addNote(newTxtNote) {
         if (newTxtNote) {
             noteService.addNote(newTxtNote).then(note => {
@@ -42,7 +46,9 @@ export function NoteIndex() {
 
     return <section>
         <NoteFilter />
+
         <NoteAdd addNote={addNote} />
+        {/* <NoteEdit noteEdit={noteEdit} /> */}
         <NoteList notes={notes} onRemoveNote={onRemoveNote} />
 
     </section>

@@ -39,7 +39,7 @@ function remove(noteId) {
 }
 
 function getEmptyNote(type="note-txt", txt = '') {
-    return {type, isPinned: false, info:{txt:txt}}
+    return {type, isPinned: false, info:{txt:txt}, style:{backgroundColor: 'blue'}}
 }
 function changeNoteStyle(channgedNote){
     return save(channgedNote)
