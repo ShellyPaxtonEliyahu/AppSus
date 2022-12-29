@@ -11,12 +11,23 @@ export const mailService = {
     remove,
     save,
     getEmptyMail,
+    getDefaultFilter,
 }
 
+function getDefaultFilter() {
+    return {subject, body, isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from}
+}
 
-function query() {
+function query(filterBy = getDefaultFilter) {
     return aStorageService.query(MAIL_KEY)
         .then(mails => {
+            if(filterBy.isRead) {
+                const regex = new RegExp(filterBy.isRead,'i')
+                mails = mails.filter(mail=>regex.test(mail.isRead))
+            }
+            if(filterBy.body) {
+                mails = mails.filter(mail=>regex.test(mail.body))
+            }
             return mails
         })
 }

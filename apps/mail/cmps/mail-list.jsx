@@ -2,21 +2,28 @@ const { Link } = ReactRouterDOM
 const { useState, Fragment } = React
 import { MailPreview } from "./mail-preview.jsx";
 
-export function MailList({ mails }) {
+export function MailList({ mails, onRemoveMail }) {
     const [isExpanded, setIsExpanded] = useState(false)
     return <table border="1">
-    <thead>
-        <tr>
-            <th>subject</th>
-            <th>body</th>
-        </tr>
-    </thead>
-    <tbody>
-        {mails.map(mail => <MailPreview key={mail.id} mail={mail} />)}
-    </tbody>
-</table>
+        <thead>
+            <tr>
+                <th>subject</th>
+                <th>body</th>
+            </tr>
+        </thead>
+        <tbody>
+            {mails.map(mail => <tr key={mail.id}>
+                <MailPreview key={mail.id} mail={mail} />
+                <button onClick={() => onRemoveMail(mail.id)}>🗑</button>
+            </tr>
+            )}
 
-  
+
+
+        </tbody>
+    </table>
+
+
 
 }
 
@@ -24,9 +31,11 @@ export function MailList({ mails }) {
 
 
 
+// <div>
+//     <button onClick={() => onRemoveMail(mail.id)}>🗑</button>
+// </div>
 
-
-
+// <MailPreview key={mail.id} mail={mail} />
 
 
 // <section className="mail-list">
