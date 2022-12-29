@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-import { mailService } from "../services/mail.service.jsx"
+import { mailService } from "../services/mail.service.js"
 
 export function MailFilter({ onSetFilter }) {
 
@@ -16,9 +16,11 @@ export function MailFilter({ onSetFilter }) {
         onSetFilter(filterByEdit)
     }
 
-    // function handleChange({target}) {
-    //     let {value,name:field}
-    // }
+    function handleChange({target}) {
+        // console.log('field',field)
+        // let {value,name:field} = target
+        // value=()
+    }
 
 
 

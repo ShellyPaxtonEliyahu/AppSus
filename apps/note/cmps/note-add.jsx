@@ -6,21 +6,15 @@ import { noteService } from "../services/note.service.js"
 
 export function NoteAdd({ addNote }) {
 
-
     const [newTxtNote, setTxtNewNote] = useState('')
-
-
 
     function handleChange({ target }) {
         let { value } = target
-
-        console.log(value)
         setTxtNewNote(value)
     }
 
     function onAddNote(ev) {
         ev.preventDefault()
-
         addNote(newTxtNote)
     }
 

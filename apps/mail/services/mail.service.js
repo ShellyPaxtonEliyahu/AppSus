@@ -15,7 +15,7 @@ export const mailService = {
 }
 
 function getDefaultFilter() {
-    return {subject, body, isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from}
+    return {subject:'', body:'', isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from:''}
 }
 
 function query(filterBy = getDefaultFilter) {
