@@ -15,7 +15,7 @@ export const mailService = {
 }
 
 function getDefaultFilter() {
-    return {subject:'', body:'', isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from:''}
+    return {subject:'', body:'', isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from:'danayani@gmail.com'}
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -34,7 +34,6 @@ function query(filterBy = getDefaultFilter()) {
 }
 
 function get(mailId) {
-    console.log('mailId',mailId)
     return aStorageService.get(MAIL_KEY, mailId)
 }
 
@@ -50,8 +49,8 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(subject = '', body = '',from = '') {
-    return { subject, body, isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from }
+function getEmptyMail(subject = '', body = '') {
+    return { subject, body, isRead: false, sendAt: Date.now(), to:'shellypax@gmail.com',from:'danayani@gmail.com' }
 }
 
 function _createMails() {
@@ -65,7 +64,7 @@ function _createMails() {
                 isRead: false,
                 sendAt: Date.now(),
                 to: 'shellypax@gmail.com',
-                from: null
+                from: 'danayani@gmail.com'
             },
             {
                 id: 'sru340',
@@ -74,7 +73,7 @@ function _createMails() {
                 isRead: false,
                 sendAt: Date.now(),
                 to: 'shellypax@gmail.com',
-                from: null
+                from: 'danayani@gmail.com'
             },
             {
                 id: 'iurt34',
@@ -83,7 +82,7 @@ function _createMails() {
                 isRead: false,
                 sendAt: Date.now(),
                 to: 'shellypax@gmail.com',
-                from: null
+                from: 'danayani@gmail.com'
             },
             {
                 id: 'ig9e09',
@@ -92,7 +91,7 @@ function _createMails() {
                 isRead: false,
                 sendAt: Date.now(),
                 to: 'shellypax@gmail.com',
-                from: null
+                from: 'danayani@gmail.com'
             },
         ]
     }
