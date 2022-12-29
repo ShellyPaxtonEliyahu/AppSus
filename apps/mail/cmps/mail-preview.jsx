@@ -1,6 +1,6 @@
 const { useState, Fragment } = React
 const { Link } = ReactRouterDOM
-import { MailDetails } from "../cmps/mail-details.jsx"
+// import { MailDetails } from "../cmps/mail-details.jsx"
 import { mailService } from "../services/mail.service.js"
 export function MailPreview({ mail, onRemoveMail }) {
     console.log('mail', mail)
@@ -32,7 +32,7 @@ export function MailPreview({ mail, onRemoveMail }) {
         <div>
             {mail.sendAt}
         </div>
-        {isExpanded && <MailDetails />}
+        {/* {isExpanded && <MailDetails />} */}
     </Fragment>
 
 }
