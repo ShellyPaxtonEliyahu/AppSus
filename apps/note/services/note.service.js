@@ -9,7 +9,8 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
-    addNote
+    addNote,
+    changeNoteStyle
 }
 
 function query() {
@@ -25,7 +26,7 @@ function addNote(txt){
 }
 
 function save(note) {
-    console.log('note',note)
+    console.log('note save',note)
     if (note.id) {
         return aStorageService.put(STORAGE_KEY, note)
     } else {
@@ -40,6 +41,9 @@ function remove(noteId) {
 function getEmptyNote(type="note-txt", txt = '') {
     return {type, isPinned: false, info:{txt:txt}}
 }
+function changeNoteStyle(channgedNote){
+    return save(channgedNote)
+}
 
 function _createNotes() {
     let notes = aStorageService.loadFromStorage(STORAGE_KEY)
@@ -52,6 +56,9 @@ function _createNotes() {
                 isPinned: false,
                 info: {
                     txt: "Fullstack Me Baby!"
+                },
+                style:{
+                    backgroundColor: 'blue'
                 }
             },
             {
@@ -60,6 +67,9 @@ function _createNotes() {
                 isPinned: false,
                 info: {
                     txt: "Fullstack you !"
+                },
+                style:{
+                    backgroundColor: 'green'
                 }
             }
         ]

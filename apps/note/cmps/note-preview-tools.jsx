@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-export function NotePreviewTools({ onRemoveNote, changeBGColor }) {
+export function NotePreviewTools({note, onRemoveNote, changeBGColor }) {
 
     const [newColor, setNewColor] = useState('')
 
