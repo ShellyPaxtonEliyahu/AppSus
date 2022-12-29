@@ -8,6 +8,6 @@ export function NoteEdit({ note }) {
 
     return <section>
         NoteEdit
-        {console.log('NoteEdit', note)}
+        {/* {console.log('NoteEdit', note)} */}
     </section>
 }

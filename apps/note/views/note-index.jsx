@@ -2,10 +2,10 @@ const { useState, useEffect } = React
 
 import { NoteAdd } from "../cmps/note-add.jsx"
 import { NoteFilter } from "../cmps/note-filter.jsx"
-import { NoteList } from "../cmps/note-list.jsx"
+// import { NoteList } from "../cmps/note-list.jsx"
 import { noteService } from "../services/note.service.js"
 import { showSuccessMsg } from "../../../services/event-bus.service.js"
-import { NoteEdit } from "../cmps/note-edit.jsx"
+// import { NoteEdit } from "../cmps/note-edit.jsx"
 
 export function NoteIndex() {
 
@@ -51,7 +51,7 @@ export function NoteIndex() {
 
         <NoteAdd addNote={addNote} />
         {/* <NoteEdit noteEdit={noteEdit} /> */}
-        <NoteList notes={notes} onRemoveNote={onRemoveNote} />
+        {/* <NoteList notes={notes} onRemoveNote={onRemoveNote} /> */}
 
     </section>
 
