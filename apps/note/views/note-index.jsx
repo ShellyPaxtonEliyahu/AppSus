@@ -2,9 +2,11 @@ const { useState, useEffect } = React
 
 import { NoteAdd } from "../cmps/note-add.jsx"
 import { NoteFilter } from "../cmps/note-filter.jsx"
-// import { NoteList } from "../cmps/note-list.jsx"
+import { NoteList } from "../cmps/note-list.jsx"
 import { noteService } from "../services/note.service.js"
 import { showSuccessMsg } from "../../../services/event-bus.service.js"
+import { NoteEdit } from "../cmps/note-edit.jsx"
+
 // import { NoteEdit } from "../cmps/note-edit.jsx"
 
 export function NoteIndex() {
@@ -32,6 +34,17 @@ export function NoteIndex() {
                 // showErrorMsg('Could not remove note')
             })
     }
+    
+    function onEditNote(noteId){
+        noteService.get(noteId).then((note) => {
+            setNoteEdit(note)
+            console.log('onEditNote', note)
+            onRemoveNote(noteId)
+        })
+        .catch((err) => {
+            console.log('onEditNote-not good', err)
+        })
+    }
 
     function addNote(newTxtNote) {
         if (newTxtNote) {
@@ -42,16 +55,14 @@ export function NoteIndex() {
         else console.log('no new note')
     }
 
-    function editNote(noteId){
-        console.log('editNote')
-    }
 
     return <section>
         <NoteFilter />
 
         <NoteAdd addNote={addNote} />
-        {/* <NoteEdit noteEdit={noteEdit} /> */}
-        {/* <NoteList notes={notes} onRemoveNote={onRemoveNote} /> */}
+        {noteEdit && <NoteEdit noteEdit={noteEdit} />}
+        <NoteList notes={notes} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
+
 
     </section>
 
