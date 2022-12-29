@@ -17,9 +17,11 @@ export function MailFilter({ onSetFilter }) {
     }
 
     function handleChange({target}) {
-        // console.log('field',field)
-        // let {value,name:field} = target
-        // value=()
+        console.log('field',field)
+        let {value,name:field,type} = target
+        if(value==='unread')
+        setFilterByEdit((prevFilter)=>{({...prevFilter,[field]:value})}) 
+        
     }
 
 
@@ -28,10 +30,17 @@ export function MailFilter({ onSetFilter }) {
 
     return <section>
         <h3>Filter Mails</h3>
-        <form onSubmit={onSubmitFilter}>
+        <label htmlFor="mail-read">Read/Unread:</label>
+        <select name="isRead" id="mail-read" type="text" onChange={handleChange}>
+            <option value="read">Read</option>
+            <option value="unread">Unread</option>
+        </select>
+
+
+        {/* <form onSubmit={onSubmitFilter}>
             <label htmlFor="mark"></label>
             <input type="checkbox" id="mark" name="!isRead" value={filterByEdit.isRead} onChange={handleChange}/>
-        </form>
+        </form> */}
     </section>
 
 

@@ -1,9 +1,7 @@
-const { Link } = ReactRouterDOM
-const { useState, Fragment } = React
+// const { useState, Fragment } = React
 import { MailPreview } from "./mail-preview.jsx";
 
 export function MailList({ mails, onRemoveMail }) {
-    const [isExpanded, setIsExpanded] = useState(false)
     return <table border="1">
         <thead>
             <tr>
