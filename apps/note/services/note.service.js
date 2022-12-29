@@ -6,10 +6,11 @@ _createNotes()
 
 export const noteService = {
     query,
-    remove,
-    save,
-    getEmptyNote,
     addNote,
+    save,
+    remove,
+    get,
+    getEmptyNote,
     changeNoteStyle
 }
 
@@ -38,9 +39,15 @@ function remove(noteId) {
     return aStorageService.remove(STORAGE_KEY, noteId)
 }
 
+function get(noteId) {
+    return aStorageService.get(STORAGE_KEY, noteId)
+    
+}
+
 function getEmptyNote(type="note-txt", txt = '') {
     return {type, isPinned: false, info:{txt:txt}, style:{backgroundColor: 'blue'}}
 }
+
 function changeNoteStyle(channgedNote){
     return save(channgedNote)
 }

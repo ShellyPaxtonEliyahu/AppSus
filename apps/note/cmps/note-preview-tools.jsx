@@ -1,8 +1,7 @@
 const { useState, useEffect } = React
 
-import { editNote } from "../views/note-index.jsx"
 
-export function NotePreviewTools({ note, onRemoveNote, changeBGColor }) {
+export function NotePreviewTools({ note, onRemoveNote, changeBGColor, onEditNote}) {
 
     const [newColor, setNewColor] = useState('')
 
@@ -12,10 +11,10 @@ export function NotePreviewTools({ note, onRemoveNote, changeBGColor }) {
         changeBGColor(value)
     }
     
-    function onEditNote(noteId){
-        console.log('onEditNote', noteId)
-        editNote(noteId)
-    }
+    // function onEditNote(noteId){
+    //     console.log('onEditNote', noteId)
+        
+    // }
 
     const style = {
         opacity: '0',
