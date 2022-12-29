@@ -1,12 +1,9 @@
 const { useState, useEffect } = React
 
-
 import {MailFilter} from "../cmps/mail-filter.jsx"
 import { Compose } from "../cmps/mail-compose.jsx";
 import { MailList } from "../cmps/mail-list.jsx";
 import { mailService } from "../services/mail.service.js";
-
-
 
 export function MailIndex() {
     const [mails,setMails] = useState([])
@@ -36,6 +33,7 @@ export function MailIndex() {
             })
             .catch((err)=> console.log('error-remove...'))
     }
+
     function composeMail(mail) {
         mailService.save(mail)
             .then((mail) => {
@@ -45,7 +43,6 @@ export function MailIndex() {
             })
             .catch(err => console.log('error-compose...'))
     }
-    
     
     return <section>
         <MailFilter onSetFilter={onSetFilter}/>
