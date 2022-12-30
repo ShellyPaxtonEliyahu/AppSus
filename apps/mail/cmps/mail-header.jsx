@@ -5,4 +5,3 @@ export function MailHeader(){
 
     </section>
 }
-// className="mail-header"

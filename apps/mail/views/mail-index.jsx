@@ -11,32 +11,24 @@ export function MailIndex() {
 
   
     useEffect(()=> {
-        console.log('useefect')
         loadMails()
     },[filterBy])
     
     function loadMails(){
-        console.log('load mails activated')
         mailService.query(filterBy)
             .then((mails) => {
-                console.log('mails',mails)
                 setMails(mails)
             })
     }
 
     function onSetFilter(isRead) {
-        console.log('on set filter was activated boolean is:', isRead)
-
         setFilterBy(prev=>({...prev, ['isRead']:isRead}))
-        console.log('filterBy', filterBy)
-
     }
     
     function onRemoveMail(mailId) {
         mailService.remove(mailId)
             .then(()=>{
                 const updateMails = mails.filter(mail=>mail.id!==mailId)
-                console.log('mail removed!')
                 setMails(updateMails)
             })
             .catch((err)=> console.log('error-remove...'))
@@ -45,9 +37,7 @@ export function MailIndex() {
     function composeMail(mail) {
         mailService.save(mail)
             .then((mail) => {
-                console.log('mail saved!', mail)
                 setMails((prevMail)=> [mail,...prevMail])
-                
             })
             .catch(err => console.log('error-compose...'))
     }
@@ -58,5 +48,3 @@ export function MailIndex() {
         <Compose composeMail={composeMail} />
     </section>
 }
-
-// className="mail-index full main-layout"

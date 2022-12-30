@@ -7,7 +7,6 @@ export function Compose({composeMail}) {
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
 
     function onComposeMail(ev) {
-        console.log('event',ev)
         ev.preventDefault()
         composeMail(newMail)
     }
@@ -32,7 +31,7 @@ export function Compose({composeMail}) {
             <input type="textarea" name="body" id="body" placeholder="Enter your thought..." value={newMail.body} onChange={handleChange} />
 
             <div>
-                <button>Compose</button>
+                <button>Compose ➕</button>
             </div>
 
 

@@ -7,22 +7,22 @@ export function MailPreview({ mail, onRemoveMail }) {
 
     const [isExpanded, setIsExpanded] = useState(false)
 
-    const icon = (mail.isRead) ? '♥' : '🔒'
+    const icon = (mail.isRead) ? '💌' : '📧'
 
-    function onExpanded(mailId) {
-        mailService.get(mailId)
-            .then(() => {
-                mail.isRead = true
-                setIsExpanded(!isExpanded)
-            })
-    }
+    // function onExpanded(mailId) {
+    //     mailService.get(mailId)
+    //         .then(() => {
+    //             mail.isRead = true
+    //             setIsExpanded(!isExpanded)
+    //         })
+    // }
 
     return <Fragment>
         <div>
             {mail.subject}
         </div>
         <div>
-            <Link to={`/mail/${mail.id}`}>📂</Link>
+            <Link title="show details" to={`/mail/${mail.id}`}>📂</Link>
         </div>
         <div>
             {icon}
