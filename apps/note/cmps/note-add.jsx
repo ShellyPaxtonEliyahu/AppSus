@@ -16,8 +16,9 @@ export function NoteAdd({ addNote, addNoteImg }) {
     function onAddNote(ev) {
         ev.preventDefault()
 
+        //need to send {nodeType:, nodeInfo:}
         addNoteImg(newTxtNote)
-        // addNote(newTxtNote)
+        // addNote(newTxtNote) 
     }
 
     return <section>

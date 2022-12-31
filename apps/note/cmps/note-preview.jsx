@@ -2,6 +2,8 @@ const { useState, useEffect } = React
 import { NotePreviewTools } from './note-preview-tools.jsx'
 import { noteService } from '../services/note.service.js'
 
+
+
 export function NotePreview({ note, onRemoveNote, onEditNote }) {
     const NOTE_TXT = 'note-txt'
     const NOTE_IMG = 'note-img'
@@ -16,16 +18,12 @@ export function NotePreview({ note, onRemoveNote, onEditNote }) {
 
     return <article className="note-preview" style={style}>
 
-
-
-        <p> {note.type}</p>
-
         {note.type == NOTE_TXT && <p className="note-content"> {note.info.txt}</p>}
-        {note.type == NOTE_IMG && <img src={note.info.imgUrl} />}
-        {note.type == NOTE_VIDEO && <video controls
-            src={note.info.videoUrl} type="video/mp4" >
-        </video>}
-
+        {note.type == NOTE_IMG && <img className="note-img" src={note.info.imgUrl} />}
+        {note.type == NOTE_VIDEO &&
+           <iframe className="note-video"  width="200" height="150" src="https://www.youtube.com/embed/ig5oMN4XQz4" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        }
+        
         <NotePreviewTools note={note} onRemoveNote={onRemoveNote} changeBGColor={changeBGColor} onEditNote={onEditNote} />
 
 
