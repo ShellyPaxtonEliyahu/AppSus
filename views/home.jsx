@@ -3,7 +3,7 @@ const { Link } = ReactRouterDOM
 export function Home() {
 
     return <section className="home">
-        <img className="background-home" src={"/assets/img/background-home.jpg"}/>
+        {/* <img className="background-home" src={"/assets/img/background-home.jpg"}/> */}
         
         <div className="page-link-icons">
 

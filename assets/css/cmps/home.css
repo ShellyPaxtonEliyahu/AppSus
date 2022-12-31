@@ -1,5 +1,8 @@
 .home {
-    /* background-image: utl("/assets/img/background-home.jpg"); */
+    /* background-image: url(../../img/background-home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; */
+
     position: relative;
 }
 .page-link-icons{

@@ -76,10 +76,10 @@ function _createNotes() {
                 type: "note-img",
                 isPinned: false,
                 info: {
-                    imgUrl: 'https://picsum.photos/id/870/200/300?grayscale&blur=2'
+                    imgUrl: "https://picsum.photos/id/237/200/300"
                 },
                 style: {
-                    backgroundColor: 'pink',
+                    backgroundColor: 'pink'
                 }
             },
             {

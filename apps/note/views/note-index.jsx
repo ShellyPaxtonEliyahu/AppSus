@@ -46,7 +46,7 @@ export function NoteIndex() {
             })
     }
 
-    function addNote(newTxtNote) {
+    function addNote(newTxtNote) { //resive {nodeType:, nodeInfo:}
         if (newTxtNote) {
             noteService.addNote(newTxtNote).then(note => {
                 setNotes(prevNotes => [...prevNotes, note])
