@@ -21,7 +21,7 @@ export function Compose({ composeMail }) {
         setNewMail((prevNewMail) => ({ ...prevNewMail, [field]: value }))
     }
 
-    return <section className="mail-comp">
+    return <aside className="mail-comp">
         <h2 className="comp-header">Compose</h2>
         <form className="comp-form" onSubmit={onComposeMail}>
             <label htmlFor="email">From:</label>
@@ -39,7 +39,7 @@ export function Compose({ composeMail }) {
                 <button className="comp-btn">Add ➕</button>
             </div>
         </form>
-    </section>
+    </aside>
 
 
 }

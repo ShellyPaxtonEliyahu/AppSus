@@ -1,44 +1,52 @@
-.mail-index{
-  background-color: rgb(229, 241, 252);
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+.mail-index {
+    background-color: rgb(229, 241, 252);
 }
 
-.mail-filter{
+.mail-filter {
     display: flexbox;
+    margin-left: 20px;
 }
 
-.filter-select{
+.filter-select {
     border-radius: 5px;
     border: black solid 3px;
 }
 
-.filter-title{
+.filter-title {
     color: rgb(106, 77, 231);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-top: 10px;
 }
 
-.mail-list{
+.mail-list {
     list-style-type: none;
     width: 70vw;
     margin-left: 10vw;
 }
 
-.mail-item{
+.mail-item {
     text-align: left;
     border: 1px solid lightgray;
     border-radius: 5px;
 }
-.mail-item:hover{
+
+.mail-item:hover {
     box-shadow: 1px 1px 1px 1px lightgray;
     border: 1px solid gray;
 }
 
-ul div{
+ul div {
     display: inline-block;
     /* the 4 divs in mailpreview */
 }
 
-.mail-sub{
+.mail-sub {
     width: 65vw;
 }
 
@@ -46,83 +54,93 @@ ul div{
 
 } */
 
-.read-icon{}
+.read-icon {}
 
-.mail-sendat{
+.mail-sendat {
     font-style: oblique;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
 
-.mail-comp{
+.mail-comp {
     margin-top: 10px;
-    
+    width: 300px;
+    padding: 20px;
 }
-.comp-header{
+
+.comp-header {
     color: rgb(106, 77, 231);
 }
 
-.comp-form{
+.comp-form {
     margin-top: 10px;
 }
 
-.from-input{
+.from-input {
     margin-bottom: 5px;
     border-radius: 5px;
     border: black solid 3px;
 }
 
-.sub-input{
-    margin-bottom: 5px;
-    border-radius: 5px;
-    border: black solid 3px;
-}
-.body-input{
+.sub-input {
     margin-bottom: 5px;
     border-radius: 5px;
     border: black solid 3px;
 }
 
-.mail-details{
+.body-input {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: black solid 3px;
+}
+
+.mail-details {
     margin-top: 10px;
 }
 
-.det-sub{
+.det-sub {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.det-from{
+.det-from {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.det-to{
+.det-to {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.det-body{
+.det-body {
     font-weight: bold;
 
 }
 
 
 /* buttons */
-button{
+button {
     cursor: pointer;
 }
 
-button:hover{
+button:hover {
     background-color: rgb(145, 143, 143);
 }
 
-.remove-btn{
+.remove-btn {
     border-radius: 5px;
     width: 35px;
     background-color: lightgray;
     border: rgb(83, 82, 82) solid 3px;
 }
 
-.comp-btn{
+.comp-btn {
     border-radius: 5px;
     border: black solid 3px;
 }
 
+@media (max-width: 600px) {
+    aside {
+      float: none;
+      width: 100%;
+      margin: 0;
+    }
+  }
