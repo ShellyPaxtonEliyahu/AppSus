@@ -46,25 +46,18 @@ export function NoteIndex() {
             })
     }
 
-    function addNote(newTxtNote) { //resive {nodeType:, nodeInfo:}
-        if (newTxtNote) {
-            noteService.addNote(newTxtNote).then(note => {
+    function addNote(shortNote) { //resive {nodeType:, nodeInfo:}
+        console.log(shortNote)
+        if (shortNote) {
+            console.log('if (shortNote)')
+            noteService.addNote(shortNote).then(note => {
+                console.log('add from index', note)
                 setNotes(prevNotes => [...prevNotes, note])
             })
         }
         else console.log('no new note')
     }
 
-    function addNoteImg(imgUrl) {
-        console.log('addNoteImg', imgUrl)
-
-        if (imgUrl) {
-            noteService.addNoteImg(imgUrl).then(note => {
-                setNotes(prevNotes => [...prevNotes, note])
-            })
-        }
-
-    }
 
 
     function updateNote(note) {
@@ -81,7 +74,7 @@ export function NoteIndex() {
 
     return <section>
         {/* <NoteFilter /> */}
-        <NoteAdd addNote={addNote} addNoteImg={addNoteImg} />
+        <NoteAdd addNote={addNote} />
         {noteEdit && <NoteEdit noteEdit={noteEdit} updateNote={updateNote} />}
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
 

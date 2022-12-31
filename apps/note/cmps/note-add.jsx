@@ -4,14 +4,14 @@ const { useNavigate, useParams, Link } = ReactRouterDOM
 import { noteService } from "../services/note.service.js"
 
 
-export function NoteAdd({ addNote, addNoteImg }) {
+export function NoteAdd({ addNote }) {
 
     const NOTE_TXT = 'note-txt'
     const NOTE_IMG = 'note-img'
     const NOTE_VIDEO = 'note-video'
 
     const [noteType, setNoteType] = useState(NOTE_TXT)
-    const addTxtPlaceHolder = 'Type your note...'
+    const [txtPlaceHolder, setTxtPlaceHolder] = useState('Type your note...')
     const [newTxtNote, setTxtNewNote] = useState('')
 
 
@@ -22,52 +22,61 @@ export function NoteAdd({ addNote, addNoteImg }) {
 
     function onAddNote(ev) {
         ev.preventDefault()
-
+        var sendNode = null
         switch (noteType) {
             case NOTE_TXT:
-                addNote(newTxtNote)
-                return
+                console.log('onAddNote txt')
+                sendNode = { noteType: 'note-txt', info: newTxtNote }
+                console.log(sendNode)
+                addNote(sendNode)
+                break
             case NOTE_IMG:
-                addNoteImg(newTxtNote)
-                return
+                console.log('onAddNote img')
+                sendNode = { noteType: 'note-img', info: newTxtNote }
+                console.log(sendNode)
+                addNote(sendNode)
+                break
             case NOTE_VIDEO:
-                setTxtNewNote('Enter video url...')
-                return
+                console.log('onAddNote video')
+                sendNode = { noteType: 'note-video', info: newTxtNote }
+                console.log(sendNode)
+                addNote(sendNode)
+                break
         }
 
 
+        setNoteType(NOTE_TXT)
+        setTxtPlaceHolder('Type your note...')
+        setTxtNewNote('')
     }
 
     function handleChangeNoteType(newNoteType) {
         console.log(newNoteType)
         setNoteType(newNoteType)
-
         switch (newNoteType) {
             case NOTE_TXT:
-                setTxtNewNote('Type your note...')
-                return
+                setTxtPlaceHolder('Type your note...')
+                break
             case NOTE_IMG:
-                setTxtNewNote('Enter img url...')
-                return
+                setTxtPlaceHolder('Enter img url...')
+                break
             case NOTE_VIDEO:
-                setTxtNewNote('Enter video url...')
-                return
+                setTxtPlaceHolder('Enter video url...')
+                break
         }
+        setTxtNewNote('')
     }
 
     return <section>
         <form onSubmit={onAddNote}>
-
-
             <input type="text"
                 name="noteTxt"
                 value={newTxtNote}
-                placeholder={addTxtPlaceHolder}
+                placeholder={txtPlaceHolder}
                 onChange={handleChange} />
-
-
             <button><i className="fa-solid fa-arrow-right"></i> </button>
         </form>
+
         <div className="note-type-options">
             <button onClick={() => handleChangeNoteType(NOTE_TXT)}>
                 <i className="fa-solid fa-a"></i>
