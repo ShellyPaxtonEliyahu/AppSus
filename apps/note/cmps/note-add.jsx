@@ -23,20 +23,42 @@ export function NoteAdd({ addNote, addNoteImg }) {
     function onAddNote(ev) {
         ev.preventDefault()
 
-        //need to send {nodeType:, nodeInfo:}
-        addNoteImg(newTxtNote)
-        // addNote(newTxtNote) 
+        switch (noteType) {
+            case NOTE_TXT:
+                addNote(newTxtNote)
+                return
+            case NOTE_IMG:
+                addNoteImg(newTxtNote)
+                return
+            case NOTE_VIDEO:
+                setTxtNewNote('Enter video url...')
+                return
+        }
+
+
     }
 
     function handleChangeNoteType(newNoteType) {
         console.log(newNoteType)
-        setNoteType(value)
+        setNoteType(newNoteType)
+
+        switch (newNoteType) {
+            case NOTE_TXT:
+                setTxtNewNote('Type your note...')
+                return
+            case NOTE_IMG:
+                setTxtNewNote('Enter img url...')
+                return
+            case NOTE_VIDEO:
+                setTxtNewNote('Enter video url...')
+                return
+        }
     }
 
     return <section>
         <form onSubmit={onAddNote}>
 
-           
+
             <input type="text"
                 name="noteTxt"
                 value={newTxtNote}
