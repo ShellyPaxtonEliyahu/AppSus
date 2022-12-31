@@ -1,4 +1,4 @@
-const { useState, useEffect } = React
+const { useState } = React
 import { NotePreviewTools } from './note-preview-tools.jsx'
 import { noteService } from '../services/note.service.js'
 
@@ -24,10 +24,6 @@ export function NotePreview({ note, onRemoveNote, onEditNote }) {
             <iframe className="note-video" width="200" height="150" src={note.info.videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
         }
-
         <NotePreviewTools note={note} onRemoveNote={onRemoveNote} changeBGColor={changeBGColor} onEditNote={onEditNote} />
-
-
-
     </article>
 }
