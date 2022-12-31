@@ -6,7 +6,14 @@ import { noteService } from "../services/note.service.js"
 
 export function NoteAdd({ addNote, addNoteImg }) {
 
+    const NOTE_TXT = 'note-txt'
+    const NOTE_IMG = 'note-img'
+    const NOTE_VIDEO = 'note-video'
+
+    const [noteType, setNoteType] = useState(NOTE_TXT)
+    const addTxtPlaceHolder = 'Type your note...'
     const [newTxtNote, setTxtNewNote] = useState('')
+
 
     function handleChange({ target }) {
         let { value } = target
@@ -21,20 +28,52 @@ export function NoteAdd({ addNote, addNoteImg }) {
         // addNote(newTxtNote) 
     }
 
+    function handleChangeNoteType(newNoteType) {
+        console.log(newNoteType)
+        setNoteType(value)
+    }
+
     return <section>
         <form onSubmit={onAddNote}>
-            <i className ="fa-solid fa-a"></i>
-            <i className="fa-regular fa-image"></i>
-            <i className="fa-brands fa-youtube"></i>
-            <i className="fa-solid fa-microphone"></i>
-            <i className="fa-solid fa-list-check"></i>
 
+           
             <input type="text"
                 name="noteTxt"
                 value={newTxtNote}
-                placeholder="Enter your note"
+                placeholder={addTxtPlaceHolder}
                 onChange={handleChange} />
-            <button > Add </button>
+
+
+            <button><i className="fa-solid fa-arrow-right"></i> </button>
         </form>
+        <div className="note-type-options">
+            <button onClick={() => handleChangeNoteType(NOTE_TXT)}>
+                <i className="fa-solid fa-a"></i>
+            </button>
+            <button onClick={() => handleChangeNoteType(NOTE_IMG)}>
+                <i className="fa-regular fa-image"></i>
+            </button>
+            <button onClick={() => handleChangeNoteType(NOTE_VIDEO)}>
+                <i className="fa-brands fa-youtube"></i>
+            </button>
+            {/* <i className="fa-solid fa-microphone"></i>
+            <i className="fa-solid fa-list-check"></i> */}
+        </div>
+
+
+
     </section>
 }
+
+
+// function DynamicCmp(props) {
+//     switch (props.noteType) {
+//         case 'note-txt':
+//             console.log('note-txt')
+//             return <p> 'note-txt'</p>
+//         case 'note-img':
+//             return <p> 'note-img'</p>
+//         case 'note-video':
+//             return <p> 'note-video'</p>
+//     }
+// }

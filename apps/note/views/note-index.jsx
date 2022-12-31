@@ -80,7 +80,7 @@ export function NoteIndex() {
 
 
     return <section>
-        <NoteFilter />
+        {/* <NoteFilter /> */}
         <NoteAdd addNote={addNote} addNoteImg={addNoteImg} />
         {noteEdit && <NoteEdit noteEdit={noteEdit} updateNote={updateNote} />}
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
