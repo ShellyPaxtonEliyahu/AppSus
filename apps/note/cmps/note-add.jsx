@@ -1,8 +1,4 @@
 const { useState, useEffect } = React
-const { useNavigate, useParams, Link } = ReactRouterDOM
-
-import { noteService } from "../services/note.service.js"
-
 
 export function NoteAdd({ addNote }) {
 
@@ -38,7 +34,8 @@ export function NoteAdd({ addNote }) {
                 break
             case NOTE_VIDEO:
                 console.log('onAddNote video')
-                sendNode = { noteType: 'note-video', info: newTxtNote }
+                var upgreadTxt = newTxtNote.replace("watch?v=", "embed/")
+                sendNode = { noteType: 'note-video', info: upgreadTxt }
                 console.log(sendNode)
                 addNote(sendNode)
                 break
@@ -95,16 +92,3 @@ export function NoteAdd({ addNote }) {
 
     </section>
 }
-
-
-// function DynamicCmp(props) {
-//     switch (props.noteType) {
-//         case 'note-txt':
-//             console.log('note-txt')
-//             return <p> 'note-txt'</p>
-//         case 'note-img':
-//             return <p> 'note-img'</p>
-//         case 'note-video':
-//             return <p> 'note-video'</p>
-//     }
-// }

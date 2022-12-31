@@ -43,7 +43,8 @@ function addNote(shortNote) {
 }
 
 function duplicateNote(note) {
-    var note = getEmptyNote(note.type, note.isPinned, note.info.txt, note.style)
+    console.log(note)
+    var note = getEmptyNote(note.type, note.isPinned, note.info, note.style)
     return save(note)
 }
 
@@ -75,7 +76,6 @@ function changeNoteStyle(channgedNote) {
 
 function _createNotes() {
     let notes = aStorageService.loadFromStorage(STORAGE_KEY)
-    // console.log('_createNotes')
     if (!notes || !notes.length) {
         notes = [
             {
@@ -113,6 +113,5 @@ function _createNotes() {
             }
         ]
     }
-
     aStorageService.saveToStorage(STORAGE_KEY, notes)
 }

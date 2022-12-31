@@ -61,7 +61,9 @@ export function NoteIndex() {
 
 
     function updateNote(note) {
-        console.log('updateNote')
+        console.log('updateNote', note)
+
+
         noteService.duplicateNote(note).then((note) => {
             setNotes(prevNotes => [note, ...prevNotes])
             setNoteEdit(null)
@@ -69,6 +71,13 @@ export function NoteIndex() {
             .catch((err) => {
                 console.log('no update note')
             })
+
+        // else{
+        //     console.log('this note is not a txt')
+
+        //     setNotes(prevNotes => [note, ...prevNotes])
+        //     setNoteEdit(null)
+        // }
     }
 
 
