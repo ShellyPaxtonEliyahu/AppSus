@@ -55,6 +55,18 @@ export function NoteIndex() {
         else console.log('no new note')
     }
 
+    function addNoteImg(imgUrl) {
+        console.log('addNoteImg', imgUrl)
+
+        if (imgUrl) {
+            noteService.addNoteImg(imgUrl).then(note => {
+                setNotes(prevNotes => [...prevNotes, note])
+            })
+        }
+
+    }
+
+
     function updateNote(note) {
         console.log('updateNote')
         noteService.duplicateNote(note).then((note) => {
@@ -69,7 +81,7 @@ export function NoteIndex() {
 
     return <section>
         <NoteFilter />
-        <NoteAdd addNote={addNote} />
+        <NoteAdd addNote={addNote} addNoteImg={addNoteImg} />
         {noteEdit && <NoteEdit noteEdit={noteEdit} updateNote={updateNote} />}
         <NoteList notes={notes} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
 

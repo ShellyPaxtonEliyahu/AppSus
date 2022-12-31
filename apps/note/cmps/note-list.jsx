@@ -6,7 +6,7 @@ export function NoteList({ notes, onRemoveNote, onEditNote}) {
         {
             
             notes.map(note => <li key={note.id}>
-                <NotePreview note={note} onRemoveNote={onRemoveNote} onEditNote={onEditNote}/> 
+                <NotePreview note={note} onRemoveNote={onRemoveNote} onEditNote={onEditNote} /> 
             </li>)
         }
     </ul>
