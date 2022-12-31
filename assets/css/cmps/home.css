@@ -1,0 +1,16 @@
+.home {
+    /* background-image: utl("/assets/img/background-home.jpg"); */
+    position: relative;
+}
+.page-link-icons{
+    z-index: 10;
+    position: absolute;
+}
+
+.background-home {
+    height: max-content;
+    width: max-content;
+
+    z-index: -10;
+    position: absolute;
+}
