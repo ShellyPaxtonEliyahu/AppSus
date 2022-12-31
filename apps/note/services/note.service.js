@@ -7,6 +7,7 @@ _createNotes()
 export const noteService = {
     query,
     addNote,
+    addNoteImg,
     duplicateNote,
     save,
     remove,
@@ -24,6 +25,13 @@ function query() {
 
 function addNote(txt) {
     var note = getEmptyNote(undefined, false, txt)
+    return save(note)
+}
+
+function addNoteImg(imgUrl){
+    // const styleImg = 
+    var note = getEmptyNote(undefined, false, imgUrl)
+    console.log(note)
     return save(note)
 }
 
@@ -68,10 +76,13 @@ function _createNotes() {
                 type: "note-txt",
                 isPinned: false,
                 info: {
-                    txt: "Fullstack Me Baby!"
+                    txt: "Fullstack img"
                 },
                 style: {
-                    backgroundColor: 'blue'
+                    backgroundColor: 'pink',
+                    
+                    
+                    imgUrl : 'https://picsum.photos/id/870/200/300?grayscale&blur=2'
                 }
             },
             {
