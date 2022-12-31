@@ -28,15 +28,15 @@ function addNote(txt) {
     return save(note)
 }
 
-function addNoteImg(imgUrl){
+function addNoteImg(imgUrl) {
     // const styleImg = 
     var note = getEmptyNote(undefined, false, imgUrl)
     console.log(note)
     return save(note)
 }
 
-function duplicateNote(note){
-    var note = getEmptyNote(note.type,note.isPinned, note.info.txt, note.style )
+function duplicateNote(note) {
+    var note = getEmptyNote(note.type, note.isPinned, note.info.txt, note.style)
     return save(note)
 }
 
@@ -73,16 +73,13 @@ function _createNotes() {
         notes = [
             {
                 id: "n101",
-                type: "note-txt",
+                type: "note-img",
                 isPinned: false,
                 info: {
-                    txt: "Fullstack img"
+                    imgUrl: 'https://picsum.photos/id/870/200/300?grayscale&blur=2'
                 },
                 style: {
                     backgroundColor: 'pink',
-                    
-                    
-                    imgUrl : 'https://picsum.photos/id/870/200/300?grayscale&blur=2'
                 }
             },
             {
@@ -91,6 +88,17 @@ function _createNotes() {
                 isPinned: false,
                 info: {
                     txt: "Fullstack you !"
+                },
+                style: {
+                    backgroundColor: 'green'
+                }
+            },
+            {
+                id: "n103",
+                type: "note-video",
+                isPinned: false,
+                info: {
+                    videoUrl: 'https://www.youtube.com/watch?v=RB-RcX5DS5A'
                 },
                 style: {
                     backgroundColor: 'green'
