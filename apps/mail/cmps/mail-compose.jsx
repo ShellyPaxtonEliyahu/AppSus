@@ -2,9 +2,14 @@ import { mailService } from "../services/mail.service.js"
 
 const { useState } = React
 
-export function Compose({composeMail}) {
+export function Compose({ composeMail }) {
 
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
+    // const [showCompose,setShowCompose] = useState(false)
+
+    // function showComposeSection() {
+    //     setShowCompose(true)
+    // }
 
     function onComposeMail(ev) {
         ev.preventDefault()
@@ -16,9 +21,9 @@ export function Compose({composeMail}) {
         setNewMail((prevNewMail) => ({ ...prevNewMail, [field]: value }))
     }
 
-    return <section>
+    return <section className="mail-comp">
         <h2>Compose</h2>
-        <form onSubmit={onComposeMail}>
+        <form className="comp-form" onSubmit={onComposeMail}>
             <label htmlFor="email">From:</label>
             <input type="email" name="from" id="email" placeholder="Enter your email..." value={newMail.from} onChange={handleChange} />
             <br />
@@ -31,10 +36,8 @@ export function Compose({composeMail}) {
             <input type="textarea" name="body" id="body" placeholder="Enter your thought..." value={newMail.body} onChange={handleChange} />
 
             <div>
-                <button>Compose ➕</button>
+                <button className="comp-btn">Add ➕</button>
             </div>
-
-
         </form>
     </section>
 

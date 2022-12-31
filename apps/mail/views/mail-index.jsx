@@ -42,9 +42,9 @@ export function MailIndex() {
             .catch(err => console.log('error-compose...'))
     }
     
-    return <section>
+    return <section className="mail-index main-layout">
         <MailFilter onSetFilter={onSetFilter}/>
-        <MailList mails={mails} onRemoveMail={onRemoveMail} />
         <Compose composeMail={composeMail} />
+        <MailList mails={mails} onRemoveMail={onRemoveMail} />
     </section>
 }

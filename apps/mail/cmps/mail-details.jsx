@@ -21,11 +21,11 @@ export function MailDetails() {
             .catch((err) => { console.log('error with mail details') })
     }
 
-    return <section>
-        <h1>Subject:{mail.subject}</h1>
-        <h3>From:{mail.from}</h3>
-        <h3>To:{mail.to}</h3>
+    return <section className="mail-details">
+        <h1 className="det-sub">Subject:{mail.subject}</h1>
+        <h3 className="det-from">From:{mail.from}</h3>
+        <h3 className="det-to">To:{mail.to}</h3>
         <hr/>
-        <p>{mail.body}</p>
+        <p className="det-body">{mail.body}</p>
     </section>
 }

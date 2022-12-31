@@ -1,6 +1,66 @@
-ul{
-    list-style-type: none;
+.mail-index{
+    /* width: 70vw;
+    margin-left: 20vw; */
+    
 }
+
+.mail-filter{}
+
+.filter-select{}
+
+.filter-title{}
+
+.mail-list{
+    list-style-type: none;
+    width: 70vw;
+    margin-left: 20vw;
+}
+
+.mail-item{
+    text-align: left;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+.mail-item:hover{
+    box-shadow: 1px 1px 1px 1px lightgray;
+    border: 1px solid gray;
+}
+
 ul div{
     display: inline-block;
+    /* the 4 divs in mailpreview */
 }
+
+.mail-sub{
+    width: 65vw;
+}
+
+.mail-show-det{}
+
+.read-icon{}
+
+.mail-sendat{}
+
+.mail-comp{}
+
+.comp-from{}
+
+.mail-details{}
+
+.det-sub{}
+
+.det-from{}
+
+.det-to{}
+
+.det-body{}
+
+
+/* buttons */
+button{
+    cursor: pointer;
+}
+
+.remove-btn{}
+
+.comp-btn{}

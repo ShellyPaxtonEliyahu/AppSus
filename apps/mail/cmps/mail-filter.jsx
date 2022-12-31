@@ -16,10 +16,10 @@ export function MailFilter({ onSetFilter }) {
 
     }
 
-    return <section>
-        <h3>Filter Mails</h3>
+    return <section className="mail-filter">
+        <h3 className="filter-title">Filter Mails</h3>
         <label htmlFor="mail-read">Read/Unread:</label>
-        <select name="isRead" id="mail-read" type="text" onChange={handleChange}>
+        <select className="filter-select" name="isRead" id="mail-read" type="text" onChange={handleChange}>
             <option value="all">All</option>
             <option value="true">Read</option>
             <option value="false">Unread</option>
