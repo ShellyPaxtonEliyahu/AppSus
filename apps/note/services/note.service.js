@@ -1,13 +1,16 @@
 import { aStorageService } from '../../../services/async-storage.service.js'
 
-
 const STORAGE_KEY = 'noteDB'
 _createNotes()
+
+const NOTE_TXT = 'note-txt'
+const NOTE_IMG = 'note-img'
+const NOTE_VIDEO = 'note-video'
+
 
 export const noteService = {
     query,
     addNote,
-    addNoteImg,
     duplicateNote,
     save,
     remove,
@@ -23,20 +26,25 @@ function query() {
         })
 }
 
-function addNote(txt) {
-    var note = getEmptyNote(undefined, false, txt)
-    return save(note)
-}
-
-function addNoteImg(imgUrl) {
-    // const styleImg = 
-    var note = getEmptyNote(undefined, false, imgUrl)
-    console.log(note)
-    return save(note)
+function addNote(shortNote) {
+    console.log('addNote', shortNote)
+    var note = null
+    switch (shortNote.noteType) {
+        case NOTE_TXT:
+            note = getEmptyNote(shortNote.noteType, false, { 'txt': shortNote.info })
+            return save(note)
+        case NOTE_IMG:
+            note = getEmptyNote(shortNote.noteType, false, { 'imgUrl': shortNote.info })
+            return save(note)
+        case NOTE_VIDEO:
+            note = getEmptyNote(shortNote.noteType, false, { 'videoUrl': shortNote.info })
+            return save(note)
+    }
 }
 
 function duplicateNote(note) {
-    var note = getEmptyNote(note.type, note.isPinned, note.info.txt, note.style)
+    console.log(note)
+    var note = getEmptyNote(note.type, note.isPinned, note.info, note.style)
     return save(note)
 }
 
@@ -58,8 +66,8 @@ function get(noteId) {
 
 }
 
-function getEmptyNote(type = "note-txt", isPinned = false, txt = '', style = { backgroundColor: 'blue' }) {
-    return { type: type, isPinned: isPinned, info: { txt: txt }, style: style }
+function getEmptyNote(type = "note-txt", isPinned = false, info = null, style = { backgroundColor: 'blue' }) {
+    return { type: type, isPinned: isPinned, info: info, style: style }
 }
 
 function changeNoteStyle(channgedNote) {
@@ -68,7 +76,6 @@ function changeNoteStyle(channgedNote) {
 
 function _createNotes() {
     let notes = aStorageService.loadFromStorage(STORAGE_KEY)
-    // console.log('_createNotes')
     if (!notes || !notes.length) {
         notes = [
             {
@@ -98,14 +105,13 @@ function _createNotes() {
                 type: "note-video",
                 isPinned: false,
                 info: {
-                    videoUrl: 'https://www.youtube.com/watch?v=RB-RcX5DS5A'
+                    videoUrl: "https://www.youtube.com/embed/ig5oMN4XQz4"
                 },
                 style: {
-                    backgroundColor: 'green'
+                    backgroundColor: 'pink'
                 }
             }
         ]
     }
-
     aStorageService.saveToStorage(STORAGE_KEY, notes)
 }

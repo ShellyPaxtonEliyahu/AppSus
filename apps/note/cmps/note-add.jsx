@@ -1,17 +1,13 @@
 const { useState, useEffect } = React
-const { useNavigate, useParams, Link } = ReactRouterDOM
 
-import { noteService } from "../services/note.service.js"
-
-
-export function NoteAdd({ addNote, addNoteImg }) {
+export function NoteAdd({ addNote }) {
 
     const NOTE_TXT = 'note-txt'
     const NOTE_IMG = 'note-img'
     const NOTE_VIDEO = 'note-video'
 
     const [noteType, setNoteType] = useState(NOTE_TXT)
-    const addTxtPlaceHolder = 'Type your note...'
+    const [txtPlaceHolder, setTxtPlaceHolder] = useState('Type your note...')
     const [newTxtNote, setTxtNewNote] = useState('')
 
 
@@ -22,30 +18,62 @@ export function NoteAdd({ addNote, addNoteImg }) {
 
     function onAddNote(ev) {
         ev.preventDefault()
+        var sendNode = null
+        switch (noteType) {
+            case NOTE_TXT:
+                console.log('onAddNote txt')
+                sendNode = { noteType: 'note-txt', info: newTxtNote }
+                console.log(sendNode)
+                addNote(sendNode)
+                break
+            case NOTE_IMG:
+                console.log('onAddNote img')
+                sendNode = { noteType: 'note-img', info: newTxtNote }
+                console.log(sendNode)
+                addNote(sendNode)
+                break
+            case NOTE_VIDEO:
+                console.log('onAddNote video')
+                var upgreadTxt = newTxtNote.replace("watch?v=", "embed/")
+                sendNode = { noteType: 'note-video', info: upgreadTxt }
+                console.log(sendNode)
+                addNote(sendNode)
+                break
+        }
 
-        //need to send {nodeType:, nodeInfo:}
-        addNoteImg(newTxtNote)
-        // addNote(newTxtNote) 
+
+        setNoteType(NOTE_TXT)
+        setTxtPlaceHolder('Type your note...')
+        setTxtNewNote('')
     }
 
     function handleChangeNoteType(newNoteType) {
         console.log(newNoteType)
-        setNoteType(value)
+        setNoteType(newNoteType)
+        switch (newNoteType) {
+            case NOTE_TXT:
+                setTxtPlaceHolder('Type your note...')
+                break
+            case NOTE_IMG:
+                setTxtPlaceHolder('Enter img url...')
+                break
+            case NOTE_VIDEO:
+                setTxtPlaceHolder('Enter video url...')
+                break
+        }
+        setTxtNewNote('')
     }
 
     return <section>
         <form onSubmit={onAddNote}>
-
-           
             <input type="text"
                 name="noteTxt"
                 value={newTxtNote}
-                placeholder={addTxtPlaceHolder}
+                placeholder={txtPlaceHolder}
                 onChange={handleChange} />
-
-
             <button><i className="fa-solid fa-arrow-right"></i> </button>
         </form>
+
         <div className="note-type-options">
             <button onClick={() => handleChangeNoteType(NOTE_TXT)}>
                 <i className="fa-solid fa-a"></i>
@@ -64,16 +92,3 @@ export function NoteAdd({ addNote, addNoteImg }) {
 
     </section>
 }
-
-
-// function DynamicCmp(props) {
-//     switch (props.noteType) {
-//         case 'note-txt':
-//             console.log('note-txt')
-//             return <p> 'note-txt'</p>
-//         case 'note-img':
-//             return <p> 'note-img'</p>
-//         case 'note-video':
-//             return <p> 'note-video'</p>
-//     }
-// }
