@@ -1,19 +1,26 @@
 .mail-index{
-    /* width: 70vw;
-    margin-left: 20vw; */
-    
+  background-color: aliceblue;
 }
 
-.mail-filter{}
+.mail-filter{
+    display: flexbox;
+}
 
-.filter-select{}
+.filter-select{
+    border-radius: 5px;
+    border: black solid 3px;
+}
 
-.filter-title{}
+.filter-title{
+    color: rgb(106, 77, 231);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 10px;
+}
 
 .mail-list{
     list-style-type: none;
     width: 70vw;
-    margin-left: 20vw;
+    margin-left: 10vw;
 }
 
 .mail-item{
@@ -35,25 +42,67 @@ ul div{
     width: 65vw;
 }
 
-.mail-show-det{}
+/* .mail-show-det{
+
+} */
 
 .read-icon{}
 
-.mail-sendat{}
+.mail-sendat{
+    font-style: oblique;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
 
-.mail-comp{}
+.mail-comp{
+    margin-top: 10px;
+    
+}
+.comp-header{
+    color: rgb(106, 77, 231);
+}
 
-.comp-from{}
+.comp-form{
+    margin-top: 10px;
+}
 
-.mail-details{}
+.from-input{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: black solid 3px;
+}
 
-.det-sub{}
+.sub-input{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: black solid 3px;
+}
+.body-input{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: black solid 3px;
+}
 
-.det-from{}
+.mail-details{
+    margin-top: 10px;
+}
 
-.det-to{}
+.det-sub{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-.det-body{}
+.det-from{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.det-to{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.det-body{
+    font-weight: bold;
+
+}
 
 
 /* buttons */
@@ -61,6 +110,19 @@ button{
     cursor: pointer;
 }
 
-.remove-btn{}
+button:hover{
+    background-color: rgb(145, 143, 143);
+}
 
-.comp-btn{}
+.remove-btn{
+    border-radius: 5px;
+    width: 35px;
+    background-color: lightgray;
+    border: rgb(83, 82, 82) solid 3px;
+}
+
+.comp-btn{
+    border-radius: 5px;
+    border: black solid 3px;
+}
+
