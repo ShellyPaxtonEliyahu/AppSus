@@ -22,9 +22,9 @@ export function MailDetails() {
     }
 
     return <section className="mail-details">
-        <h1 className="det-sub">Subject:{mail.subject}</h1>
-        <h3 className="det-from">From:{mail.from}</h3>
-        <h3 className="det-to">To:{mail.to}</h3>
+        <h1 className="det-sub">Subject: {mail.subject}</h1>
+        <h3 className="det-from">From: {mail.from}</h3>
+        <h3 className="det-to">To: {mail.to}</h3>
         <hr/>
         <p className="det-body">{mail.body}</p>
     </section>

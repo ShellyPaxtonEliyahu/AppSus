@@ -22,18 +22,18 @@ export function Compose({ composeMail }) {
     }
 
     return <section className="mail-comp">
-        <h2>Compose</h2>
+        <h2 className="comp-header">Compose</h2>
         <form className="comp-form" onSubmit={onComposeMail}>
             <label htmlFor="email">From:</label>
-            <input type="email" name="from" id="email" placeholder="Enter your email..." value={newMail.from} onChange={handleChange} />
+            <input className="from-input" type="email" name="from" id="email" placeholder="Enter your email..." value={newMail.from} onChange={handleChange} />
             <br />
 
             <label htmlFor="subject">Subject:</label>
-            <input type="text" name="subject" id="subject" placeholder="Subject" value={newMail.subject} onChange={handleChange} />
+            <input className="sub-input" type="text" name="subject" id="subject" placeholder="Subject" value={newMail.subject} onChange={handleChange} />
             <br />
 
             <label htmlFor="body">Body:</label>
-            <input type="textarea" name="body" id="body" placeholder="Enter your thought..." value={newMail.body} onChange={handleChange} />
+            <input className="body-input" type="textarea" name="body" id="body" placeholder="Enter your thought..." value={newMail.body} onChange={handleChange} />
 
             <div>
                 <button className="comp-btn">Add ➕</button>
