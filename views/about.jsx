@@ -14,7 +14,7 @@ export function About() {
         <div className="about-shelly">
             <img className="img-about" src="assets/img/shelly.jpg" />
             <h2>Shelly Paxton Eliyahu</h2>
-            <p>live in Petah-Tiqwa, 29 YO. married to Naor with 1 YO beutiful child called Lenny.
+            <p>live in Petah-Tiqwa, 29 YO. married to Naor with 1 YO beutiful child named Lenny.
                 has a bachelor's degree in madicinal chemistry.
                 worked as a branch manager of a asian resturant.
                 love to hear from you (972 - 508372119), shellypax@gmail.com

@@ -7,19 +7,15 @@ const { useParams } = ReactRouterDOM
 export function MailDetails() {
     const [mail, setMail] = useState(mailService.getEmptyMail())
     const { mailId } = useParams()
-    { console.log('mailId', mailId) }
 
     useEffect(() => {
         loadMail()
-        console.log(mail)
     }, [])
 
     function loadMail() {
         mailService.get(mailId)
             .then((mail) => {
-                console.log('mail', mail)
                 mailService.toggleIsRead(mail)
-                // .then(res=>console.log('is read was changed'))
                 setMail(mail)
             })
             .catch((err) => { console.log('error with mail details') })
@@ -28,7 +24,8 @@ export function MailDetails() {
     return <section>
         <h1>Subject:{mail.subject}</h1>
         <h3>From:{mail.from}</h3>
-
-
+        <h3>To:{mail.to}</h3>
+        <hr/>
+        <p>{mail.body}</p>
     </section>
 }
